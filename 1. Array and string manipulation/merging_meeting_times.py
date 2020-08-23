@@ -1,54 +1,24 @@
 import unittest
+import copy
 
 
-# provided solution
-def merge_ranges_soln(meetings):
-
-    # Sort by start time
-    sorted_meetings = sorted(meetings)
-
-    # Initialize merged_meetings with the earliest meeting
-    merged_meetings = [sorted_meetings[0]]
-
-    for current_meeting_start, current_meeting_end in sorted_meetings[1:]:
-        last_merged_meeting_start, last_merged_meeting_end = merged_meetings[-1]
-
-        # If the current meeting overlaps with the last merged meeting, use the
-        # later end time of the two
-        if (current_meeting_start <= last_merged_meeting_end):
-            merged_meetings[-1] = (last_merged_meeting_start,
-                                   max(last_merged_meeting_end,
-                                       current_meeting_end))
-        else:
-            # Add the current meeting since it doesn't overlap
-            merged_meetings.append((current_meeting_start, current_meeting_end))
-
-    return merged_meetings
-
-
-# my solution
 def merge_ranges(meetings):
 
-    # Sort by start time
-    sorted_meetings = sorted(meetings)
-
-    # Initialize merged_meetings with the earliest meeting
-    merged_meetings = [sorted_meetings[0]]
-
-    for current_meeting_start, current_meeting_end in sorted_meetings[1:]:
-        last_merged_meeting_start, last_merged_meeting_end = merged_meetings[-1]
-
-        # If the current meeting overlaps with the last merged meeting, use the
-        # later end time of the two
-        if (current_meeting_start <= last_merged_meeting_end):
-            merged_meetings[-1] = (last_merged_meeting_start,
-                                   max(last_merged_meeting_end,
-                                       current_meeting_end))
+    # Merge meeting ranges
+    condensed_list = []
+    idx=0
+    meetings.sort(key=lambda x: x[0])
+    meetings_copy = copy.deepcopy(meetings)
+    for _ in range(len(meetings)):
+        if idx > 0 and (meetings_copy[idx][0]-meetings_copy[idx-1][1]) <= 0:
+            condensed_list[idx-1] = (meetings_copy[idx-1][0], max(meetings_copy[idx-1][1], meetings_copy[idx][1]))
+            meetings_copy[idx-1] = condensed_list[idx-1]
+            meetings_copy.pop(idx)
         else:
-            # Add the current meeting since it doesn't overlap
-            merged_meetings.append((current_meeting_start, current_meeting_end))
+            condensed_list.append((meetings_copy[idx][0], meetings_copy[idx][1]))
+            idx+=1
 
-    return merged_meetings
+    return condensed_list
 
 
 # Tests
