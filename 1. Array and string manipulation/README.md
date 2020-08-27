@@ -1,6 +1,13 @@
 # Merging Meeting Times
 
-### Lesson:
+### Notes:
 
-Instead of deepcopying the list, popping items from it and tracking index, I could have indexed the running solution list's last item.
+Instead of deepcopying the list, popping items from it and tracking index, could have indexed the running solution list's last item.
 So, need to make better use of existing variables in the code.
+
+
+# Reverse String in Place
+
+### Notes:
+
+None
