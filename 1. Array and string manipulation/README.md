@@ -17,12 +17,12 @@ No need to use a temporary variable. Can swap directly instead.
 
 ### Notes:
 
-Instead of using pop and insert, get O(n) time complexity by first swapping characters,
+Instead of using pop and insert, get O(n) time complexity by first reversing in-place by swapping characters,
 
 `input = ['g', 'o', 'o', 'd', ' ', 'a', 'm', ' ', 'i'] `
 
 `step_1 = ['i', ' ', 'm', 'a', ' ', 'd', 'o', 'o', 'g']`
 
-then tracking start and end of each words, and finally applying reverse again on each word.
+then tracking start and end of each word, and finally applying reverse again on each word.
 
 `output = ['i', ' ', 'a', 'm', ' ', 'g', 'o', 'o', 'd']`
