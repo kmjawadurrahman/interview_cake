@@ -10,4 +10,19 @@ So, need to make better use of existing variables in the code.
 
 ### Notes:
 
-None
+No need to use a temporary variable. Can swap directly instead.
+
+
+# Reverse Words
+
+### Notes:
+
+Instead of using pop and insert, get O(n) time complexity by first swapping characters,
+
+`input = ['g', 'o', 'o', 'd', ' ', 'a', 'm', ' ', 'i'] `
+
+`step_1 = ['i', ' ', 'm', 'a', ' ', 'd', 'o', 'o', 'g']`
+
+then tracking start and end of each words, and finally applying reverse again on each word.
+
+`output = ['i', ' ', 'a', 'm', ' ', 'g', 'o', 'o', 'd']`
