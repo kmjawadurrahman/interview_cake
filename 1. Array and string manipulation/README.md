@@ -36,3 +36,10 @@ O(n) time complexity is achievable. Instead of comparing each of the elements fr
 - Track current index of the two lists and the new merged list.
 - Compare the items at the current index of the two lists, then update the merged list and the indices accordingly.
 - Use indices and list length information to handle edge cases like exhausting list items (that lead to IndexError).
+
+
+# Cafe Order Checker
+
+### Notes:
+
+None.
